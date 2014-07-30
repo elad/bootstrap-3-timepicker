@@ -237,7 +237,7 @@
     },
 
     formatTime: function(hour, minute, second, meridian) {
-      hour = hour < 10 ? '0' + hour : hour;
+      //hour = hour < 10 ? '0' + hour : hour;
       minute = minute < 10 ? '0' + minute : minute;
       second = second < 10 ? '0' + second : second;
 
@@ -664,7 +664,7 @@
     },
 
     showWidget: function() {
-      if (this.isOpen) {
+      if (this.isOpen || this.template !== 'modal') {
         return;
       }
 
@@ -697,7 +697,7 @@
 
       this.updateFromElementVal();
 
-      if (this.template === 'modal' && this.$widget.modal) {
+      if (this.$widget.modal) {
         this.$widget.modal('show').on('hidden', $.proxy(this.hideWidget, this));
       } else {
         if (this.isOpen === false) {
